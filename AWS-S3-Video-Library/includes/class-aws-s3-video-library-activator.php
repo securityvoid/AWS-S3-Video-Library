@@ -16,9 +16,9 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
- * @author     Your Name <email@example.com>
+ * @package    AWS-S3-Video-Library
+ * @subpackage AWS-S3-Video-Library/includes
+ * @author     Doug Logan
  */
 class AwsS3VideoLibrary_Activator {
 
@@ -30,11 +30,10 @@ class AwsS3VideoLibrary_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-		echo "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		createTables();
+		self::createTables();
 	}
 
-	private function createTables(){
+	private static function createTables(){
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		global $wpdb;
 
