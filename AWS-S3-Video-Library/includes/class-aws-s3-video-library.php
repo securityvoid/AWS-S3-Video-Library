@@ -117,7 +117,7 @@ class AwsS3VideoLibrary {
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-plugin-name-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-aws-s3-video-library-public.php';
 
 		$this->loader = new AwsS3VideoLibrary_Loader();
 
