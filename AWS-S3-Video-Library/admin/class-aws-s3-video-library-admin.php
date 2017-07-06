@@ -1,4 +1,5 @@
 <?php
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-aws-s3-video-library-menu-video-library.php';
 
 /**
  * The admin-specific functionality of the plugin.
@@ -16,9 +17,9 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/admin
- * @author     Your Name <email@example.com>
+ * @package    AWS-S3-Video-Library
+ * @subpackage AWS-S3-Video-Library/admin
+ * @author     Doug Logan
  */
 class AwsS3VideoLibrary_Admin {
 
@@ -100,4 +101,30 @@ class AwsS3VideoLibrary_Admin {
 
 	}
 
+	public static function admin_menu(){
+		add_menu_page( 'AWS S3 Video Library', 'AWS S3 Video Library', 'manage_options', 'aws-s3-video-library-player-configs', 'AwsS3VideoLibrary_Admin::my_plugin_options' );
+		add_submenu_page( 'aws-s3-video-library-player-configs', 'AWS S3 Video Library - Video Configs', 'Video Configs', 'manage_options', 'aws-s3-video-library-player-configs', 'AwsS3VideoLibrary_Admin::my_plugin_options' );
+		add_submenu_page( 'aws-s3-video-library-player-configs', 'AWS S3 Video Library - Video Library', 'Video Library', 'manage_options', 'aws-s3-video-library', 'AWSS3VideoLibrary_menu_videoLibrary::getPage' );
+		add_submenu_page( 'aws-s3-video-library-player-configs', 'AWS S3 Video Library - Players', 'Players', 'manage_options', 'aws-s3-video-library-players', 'AwsS3VideoLibrary_Admin::my_plugin_options' );
+		add_submenu_page( 'aws-s3-video-library-player-configs', 'AWS S3 Video Library - Options', 'Options', 'manage_options', 'aws-s3-video-library-options', 'AwsS3VideoLibrary_Admin::my_plugin_options' );
+
+	}
+
+	public static function my_plugin_options() {
+		if ( !current_user_can( 'manage_options' ) )  {
+			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+		}
+		echo '<div class="wrap">';
+		echo '<p>Here is where the form would go if I actually had options.</p>';
+		echo '</div>';
+	}
+
+	public static function my_plugin_options2() {
+		if ( !current_user_can( 'manage_options' ) )  {
+			wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+		}
+		echo '<div class="wrap">';
+		echo '<p>Here is where the form would go if I actually had options.</p>';
+		echo '</div>';
+	}
 }

@@ -17,9 +17,9 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
- * @author     Your Name <email@example.com>
+ * @package    AWS-S3-Video-Library
+ * @subpackage AWS-S3-Video-Library/includes
+ * @author     Doug Logan
  */
 class AwsS3VideoLibrary_Loader {
 
@@ -47,8 +47,14 @@ class AwsS3VideoLibrary_Loader {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-
-		$this->actions = array();
+		$admin_menu = array(
+			'hook' => 'admin_menu',
+			'component' => 'AwsS3VideoLibrary_Admin',
+			'callback' => 'admin_menu',
+			'priority' => 10,
+			'accepted_args' => 1
+		);
+		$this->actions = array($admin_menu);
 		$this->filters = array();
 
 	}
